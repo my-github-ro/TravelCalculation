@@ -3,6 +3,7 @@ import Map from 'ol/Map';
 import View from 'ol/View';
 import BingMaps from 'ol/source/BingMaps';
 import {Tile as TileLayer} from 'ol/layer';
+import Geocoder from '../search_location/ol-geocoder';
 
 
 var key = "AjUW9ZYC-mBKc73TLIDkPAPyGC-3MKFkCg4e0TwirOkYdcSY29TbFk39EOEYQEjg";
@@ -43,5 +44,21 @@ function onChange() {
 }
 select.addEventListener('change', onChange);
 onChange();
+
+//add search location
+var geocoder = new Geocoder('nominatim',{
+    provider: 'bing',
+    key: key,
+    lang: 'ro-RO',
+    targetType: 'text-input',
+    limit: 2,
+    autoCompleteMinLength: 2,
+});
+geocoder.on('addresschosen', function () {
+    window.setTimeout(function () {
+        view.setZoom(13);
+    }, 1000);
+});
+map.addControl(geocoder);
 
 
