@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- vizualizarea hartii folosind Bing map key -->
+<head>
+    <title>My map</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="map/map.css">
+    <link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div id="map" class="map"></div>
+    <label for="layer-select">
+        <select id="layer-select" class= "btn btn-dark btn-sm dropdown-toggle" >
+            <option value="AerialWithLabelsOnDemand">Alege tipul de harta</option>
+            <option value="AerialWithLabelsOnDemand">Tip harta aerian</option>
+            <option value="RoadOnDemand">Tip harta drum</option>
+        </select>
+    </label>
+        <!--bootstrap element-->
+    <div id="card" class="card bg-info mb-3" >
+        <div class="card-header ">CALCULATOR COMBUSTIBIL</div>
+        <div class="card-body ">
+            <p class="card-text">Pentru a calcula consumul, completati datele de mai jos</p>
+        </div>
+    </div>
+    <!--the form used to complete the data-->
+    <form id="form">
+        <div class="form-group">
+            <label for="example1">Pornire</label>
+            <input type="search" class="form-control" id="example1"  placeholder="Introduceti localitate">
+        </div>
+        <div class="form-group ">
+            <label for="example2">Sosire</label>
+            <input type="search" class="form-control" id="example2"  placeholder="Introduceti localitate">
+        </div>
+        <div class="form-group">
+            <label for="example3">Consum combustibil</label>
+            <input type="search" class="form-control" id="example3" placeholder="Introduceti consum">
+            <small  class="form-text align-text-top">media consumului este de 7L/100 km, </small>
+            <small  class="form-text align-text-top">in caz de lipsa camp</small>
+            <label for="combustible">
+            <select id="combustible" class= "btn btn btn-dark btn-sm dropdown-toggle" >
+                <option>Alege tipul de combustibil</option>
+                <option value="benzine">Benzina</option>
+                <option value="diesel" >Motorina</option>
+                <option value="gas">Gaz</option>
+            </select>
+            </label>
+        </div>
+        <button id="send" type="submit"  class="btn btn-outline-dark">Trimite</button>
+    </form>
+
+    <script src="map/map.js"></script>
+</body>
+</html>
