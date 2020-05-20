@@ -70,7 +70,7 @@
   position: absolute;
   top: 40px;
   left: 0;
-  width:200px;
+  width: 200px;
   max-height: 200px;
   white-space: normal;
   list-style: none;
@@ -81,12 +81,12 @@
   border-top: none;
   overflow-y: auto;
 }
-
 .ol-geocoder ul.gcd-txt-result > li > a {
       display: block;
       text-decoration: none;
       padding: 3px 5px; }
       .ol-geocoder ul.gcd-txt-result > li > a:hover {
+
         background-color: #2d2c2c; }
   .ol-geocoder ul.gcd-txt-result > li:nth-child(odd) {
     background-color: #7a8392; }

@@ -60,5 +60,3 @@ geocoder.on('addresschosen', function () {
     }, 1000);
 });
 map.addControl(geocoder);
-
-

@@ -387,7 +387,7 @@
     ' class="',
     klasses.inputText.input,
     '"',
-    ' autocomplete="off" placeholder="Search ...">',
+    ' autocomplete="on" placeholder="Search ...">',
     '<span class="',
     klasses.inputText.icon,
     '"></span>',
@@ -402,11 +402,10 @@
     '"',
     '></button>',
     '</div>',
-    '<ul class="',
+    '<ul  class="',
     klasses.inputText.result,
     '"></ul>' ].join('');
   /* eslint-enable indent */
-
 
   /**
    * @class Bing
@@ -419,7 +418,7 @@
         query: '',
         key: '',
         includeNeighborhood: 0,
-        maxResults: 10,
+        maxResults: 20,
       },
     };
   };
@@ -611,6 +610,7 @@
     this.els.input.addEventListener('click', stopBubbling, false);
     this.els.input.addEventListener('input', handleValue, false);
     this.els.reset.addEventListener('click', reset, false);
+
     if (this.options.targetType === TARGET_TYPE.GLASS) {
       this.els.button.addEventListener('click', openSearch, false);
     }
@@ -649,27 +649,27 @@
     }
 
     json(ajax)
-      .then(function (res) {
-        // eslint-disable-next-line no-console
-        this$1.options.debug && console.info(res);
+        .then(function (res) {
+          // eslint-disable-next-line no-console
+          this$1.options.debug && console.info(res);
 
-        removeClass(this$1.els.reset, klasses$1.spin);
+          removeClass(this$1.els.reset, klasses$1.spin);
 
-        //will be fullfiled according to provider
-        var res_ = this$1.provider.handleResponse(res);
-        if (res_) {
-          this$1.createList(res_);
-          this$1.listenMapClick();
-        }
-      })
-      .catch(function (err) {
-        removeClass(this$1.els.reset, klasses$1.spin);
-        var li = createElement(
-          'li',
-          '<h5>Error! No internet connection?</h5>'
-        );
-        this$1.els.result.appendChild(li);
-      });
+          //will be fullfiled according to provider
+          var res_ = this$1.provider.handleResponse(res);
+          if (res_) {
+            this$1.createList(res_);
+            this$1.listenMapClick();
+          }
+        })
+        .catch(function (err) {
+          removeClass(this$1.els.reset, klasses$1.spin);
+          var li = createElement(
+              'li',
+              '<h5>Error! No internet connection?</h5>'
+          );
+          this$1.els.result.appendChild(li);
+        });
   };
 
   Nominatim.prototype.createList = function createList (response) {
@@ -692,14 +692,13 @@
       var li = createElement('li', html);
 
       li.addEventListener(
-        'click',
-        function (evt) {
-          evt.preventDefault();
-          this$1.chosen(row, addressHtml, row.address, row.original);
-        },
-        false
+          'click',
+          function (evt) {
+            evt.preventDefault();
+            this$1.chosen(row, addressHtml, row.address, row.original);
+          },
+          false
       );
-
       ul.appendChild(li);
     });
   };
@@ -791,11 +790,6 @@
     /*eslint default-case: 0*/
     switch (this.options.provider) {
       case PROVIDERS.OSM:
-        return new OpenStreet();
-      case PROVIDERS.MAPQUEST:
-        return new MapQuest();
-      case PROVIDERS.PHOTON:
-        return new Photon();
       case PROVIDERS.BING:
         return new Bing();
       case PROVIDERS.OPENCAGE:
