@@ -60,3 +60,15 @@ geocoder.on('addresschosen', function () {
     }, 1000);
 });
 map.addControl(geocoder);
+
+var global ={City1:"", City2 :"",Consumption:"", Combustible:""};
+
+function dataForm(id, callback) {
+    document.getElementById(id).addEventListener('click', callback);
+}
+dataForm('send', function () {
+    global.City1 = document.getElementById("example1").value;
+    global.City2 = document.getElementById("example2").value;
+    global.Consumption = document.getElementById("example3").value;
+    global.Combustible = document.getElementById("combustible").value;
+});

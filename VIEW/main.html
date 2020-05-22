@@ -34,29 +34,36 @@
         </div>
     </div>
     <!--the form used to complete the data-->
-    <form id="form">
+    <form id="form" action="http://localhost:63342/TrCalculation/proiectul/RESULT/result.html?"  method="get">
+        <!-- search box 1-->
         <div class="form-group">
             <label for="example1">Pornire</label>
-            <input type="search" class="form-control" id="example1"  placeholder="Introduceti localitate" required>
+            <input type="text" class="form-control"  id="example1"  placeholder="Introduceti localitate" required>
         </div>
+        <!-- search box 2-->
         <div class="form-group ">
             <label for="example2">Sosire</label>
-            <input type="search" class="form-control" id="example2"  placeholder="Introduceti localitate" required>
+            <input type="text" class="form-control" id="example2"  placeholder="Introduceti localitate" required>
         </div>
+        <!-- search box 3-->
         <div class="form-group">
             <label for="example3">Consum combustibil</label>
-            <input type="search" class="form-control" id="example3" placeholder="Introduceti consum">
+            <input type="text" class="form-control" id="example3" placeholder="Introduceti consum">
             <small  class="form-text align-text-top">media consumului este de 7L/100 km, </small>
             <small  class="form-text align-text-top">in caz de lipsa camp</small>
+        </div>
+        <!--select box -->
+        <div class="form-group">
             <label for="combustible">
-            <select id="combustible" class= "btn btn btn-dark btn-sm dropdown-toggle" >
-                <option>Alege tipul de combustibil</option>
+            <select id="combustible" class= "btn btn btn-dark btn-sm dropdown-toggle" required>
+                <option value="">Alege tipul de combustibil</option>
                 <option value="benzine">Benzina</option>
                 <option value="diesel" >Motorina</option>
                 <option value="gas">Gaz</option>
             </select>
             </label>
         </div>
+        <!-- form submit button -->
         <button id="send" type="submit"  class="btn btn-outline-dark">
             <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true">
             </span>Trimite
