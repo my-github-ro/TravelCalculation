@@ -7,6 +7,7 @@ import Geocoder from '../search_location/ol-geocoder';
 
 
 var key = "AjUW9ZYC-mBKc73TLIDkPAPyGC-3MKFkCg4e0TwirOkYdcSY29TbFk39EOEYQEjg";
+
 var styles = [
     'RoadOnDemand','Aerial','AerialWithLabelsOnDemand','CanvasDark','OrdnanceSurvey'
 ];
@@ -45,6 +46,7 @@ function onChange() {
 select.addEventListener('change', onChange);
 onChange();
 
+
 //add search location
 var geocoder = new Geocoder('nominatim',{
     provider: 'bing',
@@ -61,7 +63,43 @@ geocoder.on('addresschosen', function () {
 });
 map.addControl(geocoder);
 
-var global ={City1:"", City2 :"",Consumption:"", Combustible:""};
+var url= "http://dev.virtualearth.net/REST/v1/Locations";
+
+//autocomplet-box form
+$(document).ready(function () {
+    $("#example1,#example2").autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: url,
+                dataType: "jsonp",
+                data: {
+                    key: key,
+                    q: request.term
+                },
+                jsonp: "jsonp",
+                success: function (data) {
+                    var result = data.resourceSets[0];
+                    if (result) {
+                        if (result.estimatedTotal > 0) {
+                            response($.map(result.resources, function (item) {
+                                return {
+                                    data: item,
+                                    label: item.name ,
+                                    value: item.name
+                                }
+                            }));
+                        }
+                    }
+                }
+            });
+        },
+        minLength: 1
+    });
+});
+
+
+var global = {City1:"", City2:"" ,Consumption:"", Combustible:""};
+var url2= 'https://dev.virtualearth.net/REST/v1/Imagery/Map/Road/Routes?wp.0=';
 
 function dataForm(id, callback) {
     document.getElementById(id).addEventListener('click', callback);
@@ -71,4 +109,5 @@ dataForm('send', function () {
     global.City2 = document.getElementById("example2").value;
     global.Consumption = document.getElementById("example3").value;
     global.Combustible = document.getElementById("combustible").value;
+
 });
