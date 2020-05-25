@@ -1,41 +1,34 @@
-import 'ol/ol.css';
-import Map from 'ol/Map';
-import View from 'ol/View';
-import BingMaps from 'ol/source/BingMaps';
-import {Tile as TileLayer} from 'ol/layer';
-
-
-
 var key = "AjUW9ZYC-mBKc73TLIDkPAPyGC-3MKFkCg4e0TwirOkYdcSY29TbFk39EOEYQEjg";
 
+ // style map
 var styles = [
     'RoadOnDemand','Aerial','AerialWithLabelsOnDemand','CanvasDark','OrdnanceSurvey'
 ];
 var layers = [];
 var i, ii;
 for (i = 0, ii = styles.length; i < ii; ++i) {
-    layers.push(new TileLayer({
+    layers.push(new ol.layer.Tile({
         visible: false,
         preload: Infinity,
-        source: new BingMaps({
+        source: new ol.source.BingMaps({
             key:key,
             imagerySet: styles[i]
         })
     }));
 }
-
-var view = new View({
+var view = new ol.View({
     projection: 'EPSG:4326',
     center: [26.103086, 44.434826],
     zoom: 13
 });
 
 // add Map
-var map = new Map({
+var map = new ol.Map({
     layers: layers,
     target: 'map',
     view: view
 });
+
 var select = document.getElementById('layer-select');
 function onChange() {
     var style = select.value;
@@ -47,9 +40,9 @@ select.addEventListener('change', onChange);
 onChange();
 
 
+//autocomplet-box form
 var url= "http://dev.virtualearth.net/REST/v1/Locations";
 
-//autocomplet-box form
 $(document).ready(function () {
     $("#example1,#example2").autocomplete({
         source: function (request, response) {
@@ -93,5 +86,7 @@ dataForm('send', function () {
     global.City2 = document.getElementById("example2").value;
     global.Consumption = document.getElementById("example3").value;
     global.Combustible = document.getElementById("combustible").value;
+
+    document.getElementById("img").src = url2 + 'Pucioasa,WA;64;1&wp.1=Targoviste,WA;66;2&key=' + key;
 
 });
