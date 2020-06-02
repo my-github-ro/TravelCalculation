@@ -39,54 +39,14 @@ function onChange() {
 select.addEventListener('change', onChange);
 onChange();
 
+//send form results, result directory
+function Result() {
+var global = {City1:document.getElementById("example1").value,
+              City2:document.getElementById("example2").value ,
+              Consumption:document.getElementById("example3").value,
+              Combustible:document.getElementById("combustible").value
+            };
 
-//autocomplet-box form
-var url= "http://dev.virtualearth.net/REST/v1/Locations";
-
-$(document).ready(function () {
-    $("#example1,#example2").autocomplete({
-        source: function (request, response) {
-            $.ajax({
-                url: url,
-                dataType: "jsonp",
-                data: {
-                    key: key,
-                    q: request.term
-                },
-                jsonp: "jsonp",
-                success: function (data) {
-                    var result = data.resourceSets[0];
-                    if (result) {
-                        if (result.estimatedTotal > 0) {
-                            response($.map(result.resources, function (item) {
-                                return {
-                                    data: item,
-                                    label: item.name ,
-                                    value: item.name
-                                }
-                            }));
-                        }
-                    }
-                }
-            });
-        },
-        minLength: 1
-    });
-});
-
-
-var global = {City1:"", City2:"" ,Consumption:"", Combustible:""};
-var url2= 'https://dev.virtualearth.net/REST/v1/Imagery/Map/Road/Routes?wp.0=';
-
-function dataForm(id, callback) {
-    document.getElementById(id).addEventListener('click', callback);
+    localStorage.setItem("myValue",JSON.stringify(global));
+    window.location.href = "./result/result.js";
 }
-dataForm('send', function () {
-    global.City1 = document.getElementById("example1").value;
-    global.City2 = document.getElementById("example2").value;
-    global.Consumption = document.getElementById("example3").value;
-    global.Combustible = document.getElementById("combustible").value;
-
-    document.getElementById("img").src = url2 + 'Pucioasa,WA;64;1&wp.1=Targoviste,WA;66;2&key=' + key;
-
-});

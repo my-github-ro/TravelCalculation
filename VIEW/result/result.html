@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- jquery extern lib -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.5.1.js" type="text/javascript"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/jquery-ui.js" type="text/javascript"></script>
+    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/themes/redmond/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+    <script src="result.js"></script>
+    <link rel="stylesheet" href="result.css">
+    <title>Result</title>
+</head>
+<body class="jumbotron"  onload="fctResult()">
+<iframe id="map1"></iframe>
+<iframe  id="map2" ></iframe>
+    <div id="card2" class="card bg-light mb-3">
+        <img class=card-body" src="vector-img/fuel-card.jpg" alt="fuel-card">
+        <h1>Costul dumneavoastra difera in functie de traseu</h1>
+    </div>
+    <div class="text-secondary">
+        <!-- add results map 1-->
+        <h2 id="title-map1" >Cel mai scurt drum</h2>
+        <p class="text-result" id="txt1" >Punct pornire: <i id="result-start"> </i>
+            <br><br>Punct sosire: <i id="result-stop"> </i>
+            <br><br>Durata: <i id="result-duration"> </i><a> minute</a>
+            <br><br> Consum: <i id="result-totalConsuption"> </i><a> litri</a>
+            <br><br> Distanta: <i id="result-distance"> </i><a> km</a>
+            <br><br> Cost:
+        </p>
+        <!-- add results map 2-->
+        <h2 id="title-map2" >Cel mai rapid drum</h2>
+        <p class="text-result" id="txt2" >Punct pornire<b id="result2-start"> </b>
+            <br><br>Punct sosire:<b id="result2-stop"> </b>
+            <br><br>Durata:
+            <br><br> Consum:
+            <br><br> Distanta:
+            <br><br> Cost:
+        </p>
+    </div>
+    <a id="anchor"  href="../../main.html" class="p-3 mb-2 bg-secondary text-light">inapoi la pagina principala</a>
+</body>
+</html>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>My map</title>
+    <title>TravelCalculation</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet"  href="map/map.css">
-    <!-- ol extern lib-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/css/ol.css">
+    <link rel="stylesheet"  href="VIEW/map/map.css">
+    <!-- ol entern lib -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/css/ol.css" type="text/css">
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/build/ol.js"></script>
     <!-- bootstrap extern lib-->
     <link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -33,15 +33,16 @@
         </div>
     </div>
     <!--the form used to complete the data-->
-    <form id="form" action="http://localhost:63342/TrCalculation/proiectul/VIEW/index.html?"  method="get">
+    <form id="form"  onsubmit="Result()" action="VIEW/result/result.html" method="get">
         <!-- search box 1-->
-        <div class="form-group">
+        <div class="form-group" >
+            <img id="img" src="VIEW/map/station.png" alt="img gas station">
             <label for="example1">Pornire</label>
             <input type="text" class="form-control"  id="example1"  placeholder="Introduceti localitate" required>
         </div>
         <!-- search box 2-->
         <div class="form-group ">
-            <label for="example2">Sosire</label>
+            <label  for="example2">Sosire</label>
             <input type="text" class="form-control" id="example2"  placeholder="Introduceti localitate" required>
         </div>
         <!-- search box 3-->
@@ -63,13 +64,13 @@
             </label>
         </div>
         <!-- form submit button -->
-        <button id="send" type="submit"  class="btn btn-outline-dark">
-            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true">
-            </span>Trimite
-        </button>
+            <button id="send"  type="submit"  class="btn btn-outline-dark">
+                <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true">
+                </span>Trimite
+            </button>
     </form>
 
-    <img id="img" src="map/station.png" alt="img gas station">
-    <script src="map/map.js"></script>
+    <script src="VIEW/autocomplet/(form)autocomplet.js"></script>
+    <script src="VIEW/map/map.js"></script>
 </body>
 </html>
