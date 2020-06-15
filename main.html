@@ -4,10 +4,13 @@
     <title>TravelCalculation</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--style-->
     <link rel="stylesheet"  href="VIEW/map/map.css">
-    <!-- ol entern lib -->
+    <!-- ol extern lib -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/css/ol.css" type="text/css">
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/build/ol.js"></script>
+    <!--ol geocoder-->
+    <script src="https://unpkg.com/ol-geocoder"></script>
     <!-- bootstrap extern lib-->
     <link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- jquery extern lib -->
@@ -48,9 +51,7 @@
         <!-- search box 3-->
         <div class="form-group">
             <label for="example3">Consum combustibil</label>
-            <input type="text" class="form-control" id="example3" placeholder="Introduceti consum">
-            <small  class="form-text align-text-top">media consumului este de 7L/100 km, </small>
-            <small  class="form-text align-text-top">in caz de lipsa camp</small>
+            <input type="text" class="form-control" id="example3" placeholder="Introduceti consum" required>
         </div>
         <!--select box -->
         <div class="form-group">
@@ -69,7 +70,6 @@
                 </span>Trimite
             </button>
     </form>
-
     <script src="VIEW/autocomplet/(form)autocomplet.js"></script>
     <script src="VIEW/map/map.js"></script>
 </body>

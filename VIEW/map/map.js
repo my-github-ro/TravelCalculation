@@ -16,6 +16,16 @@ for (i = 0, ii = styles.length; i < ii; ++i) {
         })
     }));
 }
+var select = document.getElementById('layer-select');
+function onChange() {
+    var style = select.value;
+    for (var i = 0, ii = layers.length; i < ii; ++i) {
+        layers[i].setVisible(styles[i] === style);
+    }
+}
+select.addEventListener('change', onChange);
+onChange();
+
 var view = new ol.View({
     projection: 'EPSG:4326',
     center: [26.103086, 44.434826],
@@ -29,15 +39,23 @@ var map = new ol.Map({
     view: view
 });
 
-var select = document.getElementById('layer-select');
-function onChange() {
-    var style = select.value;
-    for (var i = 0, ii = layers.length; i < ii; ++i) {
-        layers[i].setVisible(styles[i] === style);
-    }
-}
-select.addEventListener('change', onChange);
-onChange();
+//add search location
+var geocoder = new Geocoder('nominatim',{
+    provider: 'bing',
+    key: key,
+    targetType: 'text-input',
+    placeholder:'Cautati o adresa',
+    lang: 'ro-RO',
+    limit: 2,
+    autoComplete : true,
+    autoCompleteMinLength: 2,
+});
+geocoder.on('addresschosen', function () {
+    window.setTimeout(function () {
+        view.setZoom(13);
+    }, 1000);
+});
+map.addControl(geocoder);
 
 //send form results, result directory
 function Result() {
@@ -50,3 +68,6 @@ var global = {City1:document.getElementById("example1").value,
     localStorage.setItem("myValue",JSON.stringify(global));
     window.location.href = "./result/result.js";
 }
+
+
+

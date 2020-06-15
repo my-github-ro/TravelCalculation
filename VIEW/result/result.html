@@ -3,39 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+     <!-- bootstrap extern lib-->
     <link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <!-- Bing map control-->
+    <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AjUW9ZYC-mBKc73TLIDkPAPyGC-3MKFkCg4e0TwirOkYdcSY29TbFk39EOEYQEjg&callback=loadMap' async defer></script>
     <script src="result.js"></script>
     <link rel="stylesheet" href="result.css">
     <title>Result</title>
 </head>
-<body class="jumbotron"  onload="fctResult()">
-<iframe id="map1"></iframe>
-<iframe  id="map2" ></iframe>
+<body class="jumbotron" >
+    <div id='myMap' ></div>
+    <div id="printoutPanel"></div>
     <div id="card2" class="card bg-light mb-3">
         <img class=card-body" src="vector-img/fuel-card.jpg" alt="fuel-card">
         <h1>Costul dumneavoastra difera in functie de traseu</h1>
     </div>
     <div class="text-secondary">
-        <!-- add results map 1-->
-        <h2 id="title-map1" >Cel mai scurt drum</h2>
-        <p class="text-result" id="txt1" >Punct pornire: <i id="result-start"> </i>
+        <!-- add results map -->
+        <h2 id="title-map" >Cel mai scurt timp</h2>
+        <p id="text-result" >Punct pornire: <i id="result-start"> </i>
             <br><br>Punct sosire: <i id="result-stop"> </i>
-            <br><br>Durata: <i id="result-duration"> </i><a> minute</a>
-            <br><br> Consum: <i id="result-totalConsuption"> </i><a> litri</a>
-            <br><br> Distanta: <i id="result-distance"> </i><a> km</a>
-            <br><br> Cost:
-        </p>
-        <!-- add results map 2-->
-        <h2 id="title-map2" >Cel mai rapid drum</h2>
-        <p class="text-result" id="txt2" >Punct pornire<b id="result2-start"> </b>
-            <br><br>Punct sosire:<b id="result2-stop"> </b>
-            <br><br>Durata:
-            <br><br> Consum:
-            <br><br> Distanta:
-            <br><br> Cost:
+            <br><br>Durata: <i id="duration_map"> </i><a> minute</a>
+            <br><br> Consum: <i id="consuption_map"> </i><a> litri</a>
+            <br><br> Distanta: <i id="distance_map"> </i><a> km</a>
+            <br><br> Cost: <i id="cost_map"> </i><a> lei</a>
         </p>
     </div>
-    <a id="anchor"  href="../../main.html" class="p-3 mb-2 bg-secondary text-light">inapoi la pagina principala</a>
+    <a id="anchor"  href="../../main.html" class="p-3 mb-2 bg-secondary text-light">inapoi la formular</a>
 </body>
 </html>
